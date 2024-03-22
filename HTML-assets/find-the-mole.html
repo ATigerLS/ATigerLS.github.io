@@ -1,0 +1,253 @@
+<html>
+	<head>
+		<style>
+			body {
+			  font-family: Arial, sans-serif;
+			  background-color: #f0f5f9;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+			  height: 100vh;
+			  margin: 0;
+			}
+			
+			.app {
+			  text-align: center;
+			  background-color: #ffffff;
+			  padding: 20px;
+			  border-radius: 10px;
+			  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+			
+			.welcome {
+			  font-size: 24px;
+			  margin-bottom: 20px;
+			}
+			
+			.message {
+			  font-size: 18px;
+			  margin-bottom: 20px;
+			}
+			
+			.result {
+			  font-size: 24px;
+			  margin-bottom: 20px;
+			}
+			
+			.button {
+			  padding: 10px 20px;
+			  font-size: 16px;
+			  cursor: pointer;
+			  background-color: #4e7ab5;
+			  color: #ffffff;
+			  border: none;
+			  border-radius: 5px;
+			  margin-bottom: 20px;
+			}
+			
+			.button:hover {
+			  background-color: #345d8d;
+			}
+			
+			.forget-button {
+			  background-color: #f0ad4e;
+			}
+			
+			.check-button {
+			  background-color: #d9534f;
+			}
+			
+			.table {
+			  width: 100%;
+			  margin-top: 20px;
+			}
+			
+			.th {
+			  padding: 10px;
+			}
+			
+			.alive {
+			  background-color: #77dd77;
+			}
+			
+			.died {
+			  background-color: #ff6961;
+			}
+			
+			.mole {
+			  background-color: #d2b48c;
+			}
+			
+			.man {
+			  text-align: center;
+			}
+			
+			.playername {
+			  font-weight: bold;
+			}
+			
+			.word {
+			  margin-top: 10px;
+			  color: #777777;
+			}
+		</style> 
+		<script>
+			let alive=0,cnt=0;
+			const words=[
+				["山羊","肺鱼","王八","鸭子（魏启轩外号）"],
+				["地瓜（徐玥森外号）","栗子（栗岭诚外号）"],
+				["含羞草（邵哲瀚外号）","紫菜"],
+				["主席（张家瑞外号）","伯爵（魏启轩外号）"],
+				["人类（方淇昱外号）","人民（赵孚珉外号）"],
+				["主席（张家瑞外号）","伯爵（魏启轩外号）"],
+				["人类（方淇昱外号）","人民（赵孚珉外号）"],
+				["桃山滑雪场","四宜滑雪场"],
+				["公交","地铁"],
+				["汉堡包","肉夹馍"],
+				["电动车","摩托车","自行车"],
+				["仙丹","大便"],
+				["台式机","笔记本电脑"],
+			];
+			let seed=Date.parse(new Date())/1000,neigui,pmc,ngc;
+			function getrnd()
+			{
+				seed^=(seed<<11);
+				seed^=(seed>>4);
+				seed^=(seed<<5);
+				seed^=(seed>>14);
+				return seed;
+			}
+			function getrand(l,r)
+			{
+				return getrnd()%(r-l+1)+l;
+			}
+			function generateword()
+			{
+				let i=getrand(0,words.length-1);
+				let word=words[i];
+				let l,r;
+				while(true)
+				{
+					l=getrand(0,word.length-1);
+					r=getrand(0,word.length-1);
+					if(l!=r)
+					{
+						break;
+					}
+				}
+				return [word[l],word[r]];
+			}
+			function show(i)
+			{
+				if(i==cnt+1)
+				{
+					document.getElementById('message').innerHTML="开始讨论";
+					document.getElementById('button').style.display="none";
+					document.getElementById('table').style.display="";
+					return;
+				}
+				let word=pmc;
+				if(i==neigui)
+				{
+					word=ngc;
+				}
+				document.getElementById('message').innerHTML="请第"+i+"位选手看他的词语";
+				document.getElementById('button').innerHTML="观看";
+				document.getElementById('button').onclick=function(){alert("你的词汇是："+word);show(i+1);}
+				document.getElementById('table-content').innerHTML+=`
+<th class="man">
+	<div id="man${i}" class="alive">
+		<div class="playername">玩家${i}</div>
+		<button id="forget${i}" onclick="forget(${i})" class="button forget-button">忘记词汇</button>
+		<button id="check${i}" onclick="check(${i})" class="button check-button">投他</button>
+		<div id="word${i}" class="word" style="display: none;">（${word}）</div>
+	</div> 
+</th>
+`;
+			}
+			function endgame(pmwin)
+			{
+				if(pmwin)
+				{
+					document.getElementById('result').innerHTML="平民胜利";
+				}
+				else
+				{
+					document.getElementById('result').innerHTML="内鬼胜利";
+				}
+				document.getElementById('message').innerHTML="游戏结束";
+				document.getElementById('button').onclick=function(){location.href=location.href;}
+				document.getElementById('button').innerHTML="再来一局";
+				document.getElementById('button').style.display="";
+				document.getElementById('man'+neigui).setAttribute('class','mole');
+				console.log(document.getElementById('man'+neigui));
+				for(let i=1;i<=cnt;i++)
+				{
+					document.getElementById('forget'+i).style.display="none";
+					document.getElementById('check'+i).style.display="none";
+					document.getElementById('word'+i).style.display="";
+				}
+			}
+			function disforget()
+			{
+				document.getElementById('button').style.display="none";
+			}
+			function forget(man)
+			{
+				document.getElementById('button').style.display="";
+				document.getElementById('button').innerHTML=`查看${man}号的词语`; 
+				let word=pmc;
+				if(man==neigui)
+				{
+					word=ngc;
+				}
+				document.getElementById('button').onclick=function(){alert("你的词汇是："+word);disforget();}
+			}
+			function check(man)
+			{
+				if(man==neigui)
+				{
+					endgame(true);
+					return;
+				}
+				alive--;
+				document.getElementById(`man${man}`).setAttribute('class','died');
+				alert(man+"号是平民！"); 
+				if(alive==1)
+				{
+					endgame(false);
+				}
+			}
+			function begin()
+			{
+				document.getElementById('welcome').style.display="none";
+				cnt=parseInt(prompt('人数'));
+				if(cnt<3)
+				{
+					alert('人数太少！');
+					location.href=location.href;
+				}
+				alive=cnt-1;
+				neigui=getrand(1,cnt);
+				[pmc,ngc]=generateword();
+				show(1);
+			}
+		</script> 
+	</head>
+	<body id="body">
+		<div id="app" class="app">
+			<title>谁是内鬼 - 小游戏 - LimeSarine 的个人中心</title>
+			<div class="welcome" id="welcome">欢迎来到谁是内鬼小游戏</div>
+			<div class="message" id="message"></div>
+			<div class="result" id="result"></div>
+			<button class="button" id="button" onclick="begin();">开始游戏</button>
+			<table id="table" class="table" style="display: none;">
+				<thead>
+					<tr id="table-content">
+						
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</body>
+</html>
