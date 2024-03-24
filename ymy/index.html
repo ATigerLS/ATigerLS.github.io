@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<style>
 			body {
 				background-image: radial-gradient(#d5e2e3, #49bedd);
@@ -97,7 +98,7 @@
 				},1020);
 			}
 			function already(p) {
-				document.getElementById('popup_text').innerHTML=`�Ѿ��ǵ�${p}ҳ��`;
+				document.getElementById('popup_text').innerHTML=`已经是第${p}页！`;
 				const popup=document.getElementById('popupContainer');
 				popup.style.transition='transform 0.5s linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%)';
 				popup.classList.add('show');
@@ -115,16 +116,16 @@
 	</head>
 	<body>
 		<div id="app" class="app" align="center">
-			<h1 style="font-size: 35px;">Բ��԰����˥����������ˮ��</h1>
-			<title>Բ��԰����˥����������ˮ��</title>
+			<h1 style="font-size: 35px;">圆明园的兴衰————大水法</h1>
+			<title>圆明园的兴衰————大水法</title>
 			<div id="start" class="start">
-				<h3>ǰ��</h3>
-				<p>Բ��԰�������й��Ŵ��ʼ�԰�ֵĹ屦�������ŷḻ����ʷ�Ļ����̺�׳����԰�ֽ�����ò��<br />����ңԶ�������Բ��԰������ص����Ϻ���ΰ�ľ��£������������˵�Ŀ�⣬��Ϊ���л������������顣<br />Ȼ����������ɣ���£�Բ��԰ȴҲ�������꣬����ս��ݲУ�һ�ȵ��������</p>
-				<p><b>���죬�����Ǵ���������Ƭ�����Ի͵�԰�֣�ͨ����ˮ����һ��Ҫ������������̺��Ĳ�ɣ��Ǩ����ʷ������</b></p>
-				<button class="startbtn" onclick="start();">�����ʼ</button>
+				<h3>前言</h3>
+				<p>圆明园，曾是中国古代皇家园林的瑰宝，承载着丰富的历史文化底蕴和壮丽的园林建筑风貌。<br />在那遥远的岁月里，圆明园以其独特的气韵和雄伟的景致，吸引着无数人的目光，成为了中华文明的璀璨明珠。<br />然而，历经沧桑岁月，圆明园却也饱经风雨，遭受战火摧残，一度凋零殆尽。</p>
+				<p><b>今天，让我们带你仰望这片曾经辉煌的园林，通过大水法这一重要景点感受其中蕴含的沧桑变迁和历史沉淀。</b></p>
+				<button class="startbtn" onclick="start();">点击开始</button>
 			</div>
 			<div id="page1" class="page" style="display: none; opacity: 0;">
-				<h3>��һ���֣���ǰ�Ĵ�ˮ��</h3>
+				<h3>第一部分：以前的大水法</h3>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="already(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
@@ -133,7 +134,7 @@
 				</div>
 			</div>
 			<div id="page2" class="page" style="display: none; opacity: 0;">
-				<h3>�ڶ����֣���ˮ���Ļ���</h3>
+				<h3>第二部分：大水法的毁灭</h3>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="already(2);">2</button>
@@ -142,7 +143,7 @@
 				</div>
 			</div>
 			<div id="page3" class="page" style="display: none; opacity: 0;">
-				<h3>�������֣����ڵĴ�ˮ��</h3>
+				<h3>第三部分：现在的大水法</h3>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
@@ -151,9 +152,9 @@
 				</div>
 			</div>
 			<div id="page4" class="page" style="display: none; opacity: 0;">
-				<h3>���Ĳ��֣�����</h3>
-				<p>վ��ʱ��ĳ����У����ǿ�����Բ��԰�����ĻԻ�����ҫ��ҲĿ���������ܴݲк�������뱯�ˡ�<br />Ȼ����������ʷ�ĳ��ֲ���ͣЪ��Բ��԰Ҳ�ڷ������ػ�������չ�ֳ��µ�����ͷ�ɡ�<br />��������˥������������ᷢչ�ı�Ȼ���ɣ�������Ҫ�������ǻ����Ŷ���ʷ�����غͶ��Ļ����Ȱ���</p>
-				<p><b>Բ��԰�Ļ�����ÿһ���й�����Զ�������ǵĳ��裡<br />Ը�й�������������һ���裬�����л�����ΰ���˵��й��γ���Ŭ����</b></p>
+				<h3>第四部分：结语</h3>
+				<p>站在时光的长河中，我们看到了圆明园曾经的辉煌与荣耀，也目睹了它遭受摧残后的凄凉与悲伤。<br />然而，正如历史的车轮不曾停歇，圆明园也在风雨中重焕生机，展现出新的气象和风采。<br />或许，兴衰交替是人类社会发展的必然规律，但更重要的是我们怀揣着对历史的尊重和对文化的热爱。</p>
+				<p><b>圆明园的毁灭，是每一个中国人永远不能忘记的耻辱！<br />愿中国人们能铭记这一耻辱，向着中华民族伟大复兴的中国梦持续努力！</b></p>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
