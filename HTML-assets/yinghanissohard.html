@@ -66,6 +66,7 @@
 			}
 			.page {
 				max-height: 0px;
+				width: 100%;
 				overflow: hidden;
 				transition: max-height 1.5s linear;
 			}
@@ -108,7 +109,8 @@
 				}
 			}
 			function spinWheelBase() {
-				const randomSpin = 360 * 9 + Math.round(rand() * 360 * 2);
+				let randomSpin = 360 * 9 + Math.round(rand() * 360 * 2);
+				randomSpin = 3270;
 				wheel.style.transition = 'transform 4s ease-out';
 				wheel.style.transform = `rotate(${360 * 12 + Math.round(rand() * 360 * 2)}deg)`;
 				setTimeout(() => {
@@ -157,16 +159,17 @@
 		<button onclick="spinWheel()">旋转</button>
 		<div id="pages" style="height: 350px;">
 			<div id="page0" class="page">
-				核心训练
+				<h1>核心训练</h1>
 			</div>
 			<div id="page1" class="page">
-				无氧训练
+				<h1>无氧训练</h1>
 			</div>
 			<div id="page2" class="page">
-				有氧训练
+				<h1>有氧训练</h1>
 			</div>
 			<div id="page3" class="page">
-				Pull ups
+				<h1>Pull ups</h1>
+				<iframe scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" src="https://www.bilibili.com/blackboard/webplayer/embed-old.html?bvid=BV16g411N7ew&amp;danmaku=0&amp;autoplay=0&amp;playlist=0&amp;high_quality=1" style=""></iframe>
 			</div>
 		</div>
 	</body>
