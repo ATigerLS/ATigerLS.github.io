@@ -13,8 +13,8 @@
 <meta property="og:site_name" content="LimeSarine&#39;s Blog">
 <meta property="og:description" content=".body { 				height: 100%; 			} 			.half { 				position: absolute; 				top: 0; 				height: 100%; 				width: 50%; 				margin: 0; 				border: 0; 			} 			#left { 				left: 0; 				background-c">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-05T11:17:38.566Z">
-<meta property="article:modified_time" content="2024-04-05T11:17:38.566Z">
+<meta property="article:published_time" content="2024-04-05T11:24:22.641Z">
+<meta property="article:modified_time" content="2024-04-05T11:24:22.641Z">
 <meta property="article:author" content="Lime Sarine">
 <meta name="twitter:card" content="summary">
   
@@ -78,7 +78,7 @@
         <section id="main"><article id="page-" class="h-entry article article-type-page" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/issue3.html" class="article-date">
-  <time class="dt-published" datetime="2024-04-05T11:17:38.566Z" itemprop="datePublished">2024-04-05</time>
+  <time class="dt-published" datetime="2024-04-05T11:24:22.641Z" itemprop="datePublished">2024-04-05</time>
 </a>
     
   </div>
@@ -128,6 +128,7 @@
 				height: auto;
 				border-radius: 30%;
 				border: 0;
+				overflow: visible;
 			}
 			.result {
 				position: absolute;
@@ -145,7 +146,7 @@
 			}
 		</style>
 		<script>
-			let lefte,n,m,seed,cnt=0,rond=0,lft=0,rgt=0;
+			let lefte,n,m,seed,cnt=0,rond=0,lft=0,rgt=0,size_input;
 			let words=[
 				['创新的',['innovative','creative','inventive','innovation','renewable']],
 				['innovation',['创新','动力','希望','灵感']],
@@ -183,6 +184,7 @@
 				m=lefte.clientWidth;
 				seed=Date.parse(new Date())/1000;
 				shuffle(words);
+				size_input=parseInt(prompt(`使用多少个问题？（总共${words.length}个）`));
 			}
 			function place(e) {
 				++cnt;
@@ -309,7 +311,7 @@
 				document.getElementById('lp').innerHTML=lft;
 				document.getElementById('rp').innerHTML=rgt;
 				setTimeout(function(){
-					if(rond==words.length-1)
+					if(rond==size_input-1)
 						finish();
 					else
 					{
@@ -359,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://azaphodbeeblebrox.github.io/issue3.html" data-id="clumkocxl0000e4v5frmj5la1" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      <a data-url="https://azaphodbeeblebrox.github.io/issue3.html" data-id="clumkx38j0000yov595y5b729" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
       
       
       
