@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<style>
+			th, td {
+				border: 1px solid #ddd;
+				padding: 6px 13px;
+				text-align: center; 
+			}
+			th {
+				display: table-cell;
+				vertical-align: inherit;
+				font-weight: bold;
+			}
+			table {
+				border-collapse: collapse;
+				border-spacing: 0;
+				display: block;
+				overflow: auto;
+				word-break: keep-all;
+				margin: 10px;
+				text-indent: initial;
+				border-spacing: 2px;
+				font-size: 30px;
+			}
+			button, input {
+				font-size: 25px;
+				background-color: #ccf;
+				border: 0;
+				border-radius: 10px;
+			}
+		</style>
+		<script>
+			let words=[],wacnt=1;
+			function print() {
+				let mx=0;
+				for(let i=0;i<words.length;i++)
+					if(words[i][1].length>mx)
+						mx=words[i][1].length;
+				let ret='<table><thead><tr><td>问题</td><td>正确答案</td>';
+				for(let i=1;i<mx;i++)
+					ret=ret+'<td>错误答案'+i+"</td>";
+				ret+=`<td style='color: red; font-weight: bold;'>删除</td></tr></thead><tbody>`;
+				for(let i=0;i<words.length;i++) {
+					ret+='<tr><td class="head">'+words[i][0]+'</td>';
+					let x=words[i][1];
+					for(let j=0;j<x.length;j++)
+						ret+="<td>"+x[j]+"</td>";
+					for(let j=x.length;j<mx;j++)
+						ret+="<td></td>";
+					ret+=`<td><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="height: 25px; width: 25px;" onmousedown="rmRow(${i});"><path fill="red" d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0H284.2c12.1 0 23.2 6.8 28.6 17.7L320 32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 96 0 81.7 0 64S14.3 32 32 32h96l7.2-14.3zM32 128H416V448c0 35.3-28.7 64-64 64H96c-35.3 0-64-28.7-64-64V128zm96 64c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16V432c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16z" class=""></path></svg></td></tr>`;
+				}
+				ret+='</tbody></table>'
+				document.getElementById('tbl').innerHTML=ret;
+			}
+			function rmRow(p) {
+				let sdrow=[];
+				for(let i=0;i<words.length;i++)
+					if(i!=p)
+						sdrow.push(words[i]);
+				words=sdrow;
+				print();
+			}
+			function confirm() {
+				let x=[document.getElementById('r').value,document.getElementById('w1').value];
+				for(let i=2;i<=wacnt;i++)
+					x.push(document.getElementById(`w${i}`).value);
+				x=[document.getElementById('q').value,x];
+				words.push(x);
+				print();
+				document.getElementById('b1').innerHTML="新建行";
+				document.getElementById('b1').setAttribute("onclick","newRow();");
+				document.getElementById('b2').style.display="none";
+				document.getElementById('panel').innerHTML='';
+			}
+			function newWA() {
+				wacnt=wacnt+1;
+				let x=document.getElementById('panel');
+				let html=`<input id="w${wacnt}" placeholder="错误答案${wacnt}" />`;
+				let e=document.createElement('p');
+				e.innerHTML=html;
+				x.appendChild(e);
+			}
+			function newRow() {
+				wacnt=1;
+				document.getElementById('b1').setAttribute("onclick","confirm();");
+				document.getElementById('b1').innerHTML="完成";
+				document.getElementById('b2').style.display="";
+				document.getElementById('panel').innerHTML=`
+<p><input id="q" placeholder="问题" /></p>
+<p><input id="r" placeholder="正确答案" /></p>
+<p><input id="w1" placeholder="错误答案1" /></p>
+`;
+			}
+			function download() {
+				let text="[\n";
+				for(let i=0;i<words.length;i++) {
+					let x=words[i][1];
+					text+=" ['"+words[i][0]+"',['"+x[0];
+					for(let j=1;j<x.length;j++)
+						text+="','"+x[j];
+					text+="']],\n";
+				}
+				text+="];";
+				let data=new Blob([text],{type:'type/plain'});
+				let url=window.URL.createObjectURL(data);
+				let link=document.createElement('a');
+				link.href=url;
+				link.download='data.db';
+				link.click();
+			}
+			setTimeout(print,50);
+		</script>
+	</head>
+	<body>
+		<div id="tbl" class="tbl"></div>
+		<button id="b0" onclick="download();">下载</button>
+		<button id="b1" onclick="newRow();">新建行</button>
+		<button id="b2" onclick="newWA();" style="display: none;">新建错误答案</button>
+		<div id="panel"></div>
+	</body>
+</html>
