@@ -87,19 +87,20 @@
 				font-weight: bold;
 				margin-top: 20px;
 			}
-			.two-column {
-				display: flex;
-				flex-direction: row;
-				flex-wrap: nowrap;
-				justify-content: space-around;
-				align-items: center;
-				align-content: flex-start;
+			.seperator {
+				border: 1px black;
+				border-radius: 3px;
+				margin: 20px;
+				width: 1px;
+				background-color: black;
+				height: 100%;
 			}
-			#seperator {
-				border: 1px solid black;
+			table {
+				margin-bottom: 20px;
 			}
-			#left, #right {
-				width: 30vw;
+			td {
+				text-align: center;
+				margin: 20px;
 			}
 		</style>
 		<script>
@@ -155,15 +156,22 @@
 			</div>
 			<div id="page2" class="page" style="display: none; opacity: 0;">
 				<h3>第二部分：大水法毁灭前后比较</h3>
-				<div class="two-column">
-					<div id="left">
-						<h4>以前的大水法</h4>
-					</div>
-					<div id="seperator"></div>
-					<div id="right">
-						<h4>现在的大水法</h4>
-					</div>
-				</div>
+				<table>
+					<thead>
+						<tr>
+							<td><h4>以前的大水法</h4></td>
+							<td class="seperator"></td>
+							<td><h4>以前的大水法</h4></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>123</td>
+							<td class="seperator"></td>
+							<td>456</td>
+						</tr>
+					</tbody>
+				</table>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="already(2);">2</button>
