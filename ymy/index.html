@@ -1,22 +1,22 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<style>
 			body {
 				height: 100vh;
-				widthL 100%;
+				width: 100%;
 				margin-top: 0px;
-				background-color: rgba(0,0,0,.1);
+				background-image: linear-gradient(to left,#10abd5,#69cae4,#10abd5);
 			}
 			.app {
-				background-image: radial-gradient(#d5e2e3, #49bedd);
+				background-image: radial-gradient(#eafaff, #0eaad4);
 				display: flex;
 				align-items: center;
 				justify-content: center;
 				flex-wrap: nowrap;
 				flex-direction: column;
-				height: calc(90vh);
+				height: 90vh;
 				font-size: 10px;
 				margin-bottom: 0px;
 			}
@@ -64,7 +64,7 @@
 				flex-direction: row;
 				justify-content: flex-end;
 				align-items: center;
-				transform: translateY(-100%);
+				transform: translateY(-115%);
 				transition: transform 0.5s ease-out;
 				font-size: 30px;
 			}
@@ -86,6 +86,20 @@
 				font-size: 20px;
 				font-weight: bold;
 				margin-top: 20px;
+			}
+			.two-column {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				justify-content: space-around;
+				align-items: center;
+				align-content: flex-start;
+			}
+			#seperator {
+				border: 1px solid black;
+			}
+			#left, #right {
+				width: 30vw;
 			}
 		</style>
 		<script>
@@ -132,48 +146,45 @@
 				<button class="startbtn" onclick="start();">点击开始</button>
 			</div>
 			<div id="page1" class="page" style="display: none; opacity: 0;">
-				<h3>第一部分：以前的大水法</h3>
+				<h3>第一部分：大水法的毁灭</h3>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="already(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
 					<button id="page3" class="page-btn" onclick="page(3);">3</button>
-					<button id="page4" class="page-btn" onclick="page(4);">4</button>
 				</div>
 			</div>
 			<div id="page2" class="page" style="display: none; opacity: 0;">
-				<h3>第二部分：大水法的毁灭</h3>
+				<h3>第二部分：大水法毁灭前后比较</h3>
+				<div class="two-column">
+					<div id="left">
+						<h4>以前的大水法</h4>
+					</div>
+					<div id="seperator"></div>
+					<div id="right">
+						<h4>现在的大水法</h4>
+					</div>
+				</div>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="already(2);">2</button>
 					<button id="page3" class="page-btn" onclick="page(3);">3</button>
-					<button id="page4" class="page-btn" onclick="page(4);">4</button>
 				</div>
 			</div>
 			<div id="page3" class="page" style="display: none; opacity: 0;">
-				<h3>第三部分：现在的大水法</h3>
-				<div id="pager" class="pager">
-					<button id="page1" class="page-btn" onclick="page(1);">1</button>
-					<button id="page2" class="page-btn" onclick="page(2);">2</button>
-					<button id="page3" class="page-btn" onclick="already(3);">3</button>
-					<button id="page4" class="page-btn" onclick="page(4);">4</button>
-				</div>
-			</div>
-			<div id="page4" class="page" style="display: none; opacity: 0;">
-				<h3>第四部分：结语</h3>
+				<h3>第三部分：结语</h3>
 				<p>站在时光的长河中，我们看到了圆明园曾经的辉煌与荣耀，也目睹了它遭受摧残后的凄凉与悲伤。<br />然而，正如历史的车轮不曾停歇，圆明园也在风雨中重焕生机，展现出新的气象和风采。<br />或许，兴衰交替是人类社会发展的必然规律，但更重要的是我们怀揣着对历史的尊重和对文化的热爱。</p>
 				<p><b>圆明园的毁灭，是每一个中国人永远不能忘记的耻辱！<br />愿中国人们能铭记这一耻辱，向着中华民族伟大复兴的中国梦持续努力！</b></p>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
-					<button id="page3" class="page-btn" onclick="page(3);">3</button>
-					<button id="page4" class="page-btn" onclick="already(4);">4</button>
+					<button id="page3" class="page-btn" onclick="already(3);">3</button>
 				</div>
 			</div>
 		</div>
 		<div class="popup-container" id="popupContainer">
 			<div class="popup-content">
 				<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg">
-				  <path d="M0,10 L40,50 M40,10 L0,50" stroke="red" stroke-width="7" />
+					<path d="M0,10 L40,50 M40,10 L0,50" stroke="red" stroke-width="7" />
 				</svg>
 				<span id="popup_text"></span>
 			</div>
