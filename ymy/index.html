@@ -21,7 +21,7 @@
 				margin-bottom: 0px;
 			}
 			h1,h2,h3,h4,h5,h6 {
-				align-top: 10px;
+				margin-top: 10px;
 				font-weight: bold;
 			}
 			img {
@@ -88,10 +88,10 @@
 				margin-top: 20px;
 			}
 			.seperator {
-				border: 1px black;
+				border: 3px black;
 				border-radius: 3px;
-				margin: 20px;
-				width: 1px;
+				margin-top: -10px;
+				width: 3px;
 				background-color: black;
 				height: 100%;
 			}
@@ -101,6 +101,11 @@
 			td {
 				text-align: center;
 				margin: 20px;
+			}
+			td.sep {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
 			}
 		</style>
 		<script>
@@ -148,6 +153,18 @@
 			</div>
 			<div id="page1" class="page" style="display: none; opacity: 0;">
 				<h3>第一部分：大水法的毁灭</h3>
+				<p>
+					清咸丰十年（1860年），英法联军侵略北京时将圆明园进行了洗劫，圆明园遭到灭顶之灾。<br />
+				</p>
+				<p>
+					10月6日，英法联军侵入，在园中展开了大肆抢劫，将一切能拿走的金银珠宝、珍珠玛瑙洗劫一空。<br />
+					10月18日，他们悍然下令火烧圆明园。当天英法联军出动三四千名骑兵在圆明园5200亩的土地上到处纵火。<br />
+					顿时，圆明园的上空烟云密布、浓烟遮日。万万千千的火焰，往外爆发出来，烟青云黑，遮天蔽日。<br />
+					所有庙宇、宫殿、古远建筑，被视为举国神圣庄严之物，和其中收藏着历代皇家风味和精华的物品，都一起付之一炬，化为灰烬……<br />
+				</p>
+				<p><b>
+					如今仅存大水法、远瀛观的几个大理石石柱屹立在那里，记录着英法联军摧残中华文化的罪行。<br />
+				</b></p>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="already(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
@@ -160,14 +177,24 @@
 					<thead>
 						<tr>
 							<td><h4>以前的大水法</h4></td>
-							<td class="seperator"></td>
-							<td><h4>以前的大水法</h4></td>
+							<td class="sep" style="height: 46px;"><div class="seperator" /></td>
+							<td><h4>现在的大水法</h4></td>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>123</td>
-							<td class="seperator"></td>
+							<td class="sep" style="height: 36px;"><div class="seperator" /></td>
+							<td>456</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td class="sep" style="height: 36px;"><div class="seperator" /></td>
+							<td>456</td>
+						</tr>
+						<tr>
+							<td>123</td>
+							<td class="sep" style="height: 36px;"><div class="seperator" /></td>
 							<td>456</td>
 						</tr>
 					</tbody>
@@ -180,8 +207,14 @@
 			</div>
 			<div id="page3" class="page" style="display: none; opacity: 0;">
 				<h3>第三部分：结语</h3>
-				<p>站在时光的长河中，我们看到了圆明园曾经的辉煌与荣耀，也目睹了它遭受摧残后的凄凉与悲伤。<br />然而，正如历史的车轮不曾停歇，圆明园也在风雨中重焕生机，展现出新的气象和风采。<br />或许，兴衰交替是人类社会发展的必然规律，但更重要的是我们怀揣着对历史的尊重和对文化的热爱。</p>
-				<p><b>圆明园的毁灭，是每一个中国人永远不能忘记的耻辱！<br />愿中国人们能铭记这一耻辱，向着中华民族伟大复兴的中国梦持续努力！</b></p>
+				<p>
+					站在时光的长河中，我们看到了圆明园曾经的辉煌与荣耀，也目睹了它遭受摧残后的凄凉与悲伤。<br />
+					然而，正如历史的车轮不曾停歇，圆明园也在风雨中重焕生机，展现出新的气象和风采。<br />或许，兴衰交替是人类社会发展的必然规律，但更重要的是我们怀揣着对历史的尊重和对文化的热爱。<br />
+				</p>
+				<p><b>
+					圆明园的毁灭，是每一个中国人永远不能忘记的耻辱！<br />
+					愿中国人们能铭记这一耻辱，向着中华民族伟大复兴的中国梦持续努力！<br />
+				</b></p>
 				<div id="pager" class="pager">
 					<button id="page1" class="page-btn" onclick="page(1);">1</button>
 					<button id="page2" class="page-btn" onclick="page(2);">2</button>
